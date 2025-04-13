@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>欸！是地板誒～</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .main-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .transparent-button {
+      position: absolute;
+      bottom: 2%;
+      right: 2%;
+      width: 5%;
+      aspect-ratio: 2 / 1;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    .transparent-button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://pgpenguin72.github.io/land.png" alt="主圖" class="main-image">
+    <a href="https://penguin72.github.io/picture/land.png">
+      <button class="transparent-button"></button>
+    </a>
+  </div>
+</body>
+</html>
