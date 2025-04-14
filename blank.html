@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>空白？</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+    }
+    .item {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      cursor: default;
+      opacity: 0;
+    }
+    .money {
+      cursor: pointer;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const images = [
+      'https://cdn-icons-png.flaticon.com/512/25/25231.png',
+      'https://cdn-icons-png.flaticon.com/512/61/61112.png',
+      'https://cdn-icons-png.flaticon.com/512/54/54481.png',
+      'https://cdn-icons-png.flaticon.com/512/566/566294.png',
+      'https://cdn-icons-png.flaticon.com/512/84/84380.png',
+      'https://cdn-icons-png.flaticon.com/512/1828/1828919.png',
+      'https://cdn-icons-png.flaticon.com/512/1055/1055646.png',
+      'https://cdn-icons-png.flaticon.com/512/3649/3649464.png',
+      'https://cdn-icons-png.flaticon.com/512/888/888879.png',
+      'https://cdn-icons-png.flaticon.com/512/535/535285.png',
+      'https://cdn-icons-png.flaticon.com/512/893/893257.png',
+      'https://cdn-icons-png.flaticon.com/512/747/747376.png',
+      'https://cdn-icons-png.flaticon.com/512/1673/1673221.png',
+      'https://cdn-icons-png.flaticon.com/512/1828/1828843.png',
+      'https://cdn-icons-png.flaticon.com/512/709/709496.png',
+      'https://cdn-icons-png.flaticon.com/512/130/130304.png',
+      'https://cdn-icons-png.flaticon.com/512/1041/1041916.png',
+      'https://cdn-icons-png.flaticon.com/512/2099/2099076.png',
+      'https://cdn-icons-png.flaticon.com/512/545/545680.png',
+      'https://cdn-icons-png.flaticon.com/512/1006/1006540.png',
+      'https://cdn-icons-png.flaticon.com/512/3468/3468371.png',
+      'https://cdn-icons-png.flaticon.com/512/3524/3524659.png',
+      'https://cdn-icons-png.flaticon.com/512/484/484167.png',
+      'https://cdn-icons-png.flaticon.com/512/1309/1309207.png',
+      'https://cdn-icons-png.flaticon.com/512/4264/4264530.png',
+      'https://cdn-icons-png.flaticon.com/512/833/833472.png',
+      'https://cdn-icons-png.flaticon.com/512/616/616408.png',
+      'https://cdn-icons-png.flaticon.com/512/681/681494.png',
+      'https://cdn-icons-png.flaticon.com/512/1828/1828970.png',
+      'https://cdn-icons-png.flaticon.com/512/1828/1828990.png',
+      'https://cdn-icons-png.flaticon.com/512/2991/2991129.png',
+      'https://cdn-icons-png.flaticon.com/512/942/942748.png',
+      'https://cdn-icons-png.flaticon.com/512/542/542638.png',
+      'https://cdn-icons-png.flaticon.com/512/3094/3094843.png',
+      'https://cdn-icons-png.flaticon.com/512/1828/1828946.png',
+      'https://cdn-icons-png.flaticon.com/512/566/566927.png',
+      'https://cdn-icons-png.flaticon.com/512/126/126083.png',
+      'https://cdn-icons-png.flaticon.com/512/545/545705.png',
+      'https://cdn-icons-png.flaticon.com/512/709/709519.png',
+      'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+    ];
+
+    const moneyImg = 'https://cdn-icons-png.flaticon.com/512/3144/3144456.png：';
+
+    const totalItems = 50;
+    const moneyIndex = Math.floor(Math.random() * totalItems);
+    const reloadIndices = new Set();
+
+    while (reloadIndices.size < 3) {
+      const r = Math.floor(Math.random() * totalItems);
+      if (r !== moneyIndex) reloadIndices.add(r);
+    }
+
+    for (let i = 0; i < totalItems; i++) {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+
+      if (i === moneyIndex) {
+        const money = document.createElement('div');
+        money.classList.add('item', 'money');
+        money.style.left = `${x}px`;
+        money.style.top = `${y}px`;
+        money.style.backgroundImage = `url('${moneyImg}')`;
+        money.onclick = () => {
+          window.location.href = 'https://pgpenguin72.github.io/picture/blank.';
+        };
+        document.body.appendChild(money);
+      } else if (reloadIndices.has(i)) {
+        const reloadImg = images[Math.floor(Math.random() * images.length)];
+        const icon = document.createElement('div');
+        icon.classList.add('item');
+        icon.style.left = `${x}px`;
+        icon.style.top = `${y}px`;
+        icon.style.backgroundImage = `url('${reloadImg}')`;
+        icon.onclick = () => location.reload();
+        document.body.appendChild(icon);
+      } else {
+        const randImg = images[Math.floor(Math.random() * images.length)];
+        const link = document.createElement('a');
+        link.href = randImg;
+        link.target = '_blank';
+
+        const icon = document.createElement('div');
+        icon.classList.add('item');
+        icon.style.left = `${x}px`;
+        icon.style.top = `${y}px`;
+        icon.style.backgroundImage = `url('${randImg}')`;
+
+        link.appendChild(icon);
+        document.body.appendChild(link);
+      }
+    }
+  </script>
+</body>
+</html>
